@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  watchtower:
+    container_name: watchtower
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    restart: always
+    environment:
+      - 'WATCHTOWER_SCHEDULE=0 30 3 * * *'
+      - WATCHTOWER_NOTIFICATIONS=email
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_NOTIFICATION_EMAIL_FROM=example@gmail.com
+      - WATCHTOWER_NOTIFICATION_EMAIL_TO=example@gmail.com
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=smtp.gmail.com
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PORT=587
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=example@gmail.com
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD=password
+      - WATCHTOWER_NOTIFICATION_EMAIL_DELAY=2
+      - TZ=Europe/Kiev
+    image: containrrr/watchtower
