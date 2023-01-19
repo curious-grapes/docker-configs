@@ -27,7 +27,7 @@ git clone https://github.com/curious_grapes/docker-configs
 ```
 Navigate to the repository directory:
 ``` bash
-cd server-tools
+cd docker-configs
 ```
 Configure necessary .yml and .env configurations to your needs, change passwords, etc.
 
