@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  documentserver:
+    ports:
+      - '8010:80'
+    volumes:
+      - '/home/roman/configs/office/logs:/var/log/onlyoffice'
+      - '/home/roman/configs/office/data:/var/www/onlyoffice/Data'
+    environment:
+      - JWT_ENABLED=true
+      - JWT_SECRET=aaaaaaaaaaaaaaaaaaaa
+    restart: unless-stopped
+    image: onlyoffice/documentserver

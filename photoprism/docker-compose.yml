@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  photoprism:
+    container_name: photoprism
+    ports:
+      - '8004:2342'
+    environment:
+      - PHOTOPRISM_UPLOAD_NSFW=true
+      - PHOTOPRISM_AUTH_MODE=public
+      - PHOTOPRISM_WORKERS=2
+      - PHOTOPRISM_WAKEUP_INTERVAL=780
+      - PHOTOPRISM_DISABLE_WEBDAV=true
+      - 'PHOTOPRISM_SITE_URL=https://photo.curious-grapes.one'
+      - PHOTOPRISM_UID=1000
+      - PHOTOPRISM_GID=1000
+      - PHOTOPRISM_UMASK=0002
+    volumes:
+      - '/home/roman/configs/photoprism:/photoprism/storage'
+      - '/mnt/share/Photo/service:/photoprism/originals'
+    restart: unless-stopped
+    image: photoprism/photoprism

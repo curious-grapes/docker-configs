@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  linuxserver:
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Kiev
+      - TRANSMISSION_WEB_HOME=/combustion-release/
+    ports:
+      - '8009:9091'
+      - '51413:51413'
+      - '51413:51413/udp'
+    volumes:
+      - '/home/roman/configs/transmission:/config'
+      - '/mnt/share/other/Downloads:/downloads'
+      - '/home/roman/scripts/torrent/:/watch'
+    restart: unless-stopped
+    image: 'lscr.io/linuxserver/transmission:latest'

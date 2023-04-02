@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  linuxserver:
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Kiev
+    ports:
+      - '8008:80'
+    volumes:
+      - '/home/roman/configs/heimdall:/config'
+    restart: unless-stopped
+    image: 'lscr.io/linuxserver/heimdall:latest'
