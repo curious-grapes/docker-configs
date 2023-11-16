@@ -6,7 +6,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Kiev
-      - TRANSMISSION_WEB_HOME=/combustion-release/
     ports:
       - '8009:9091'
       - '51413:51413'
