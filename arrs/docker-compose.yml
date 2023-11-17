@@ -10,9 +10,9 @@ services:
       - PGID=1000
       - TZ=Europe/Ukraine
     volumes:
-      - /home/roman/configs/radarr:/config
-      - /mnt/share/Movies/Films:/movies #optional
-      - /mnt/share/other/Downloads:/downloads #optional
+      - /home/roman/configs/arrs/radarr:/config
+      - /mnt/share/Media/Movies:/movies #optional
+      - /mnt/share/Media/Downloads:/downloads #optional
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -26,9 +26,9 @@ services:
       - PGID=1000
       - TZ=Europe/Kyiv
     volumes:
-      - /home/roman/configs/sonarr:/config
-      - /mnt/share/Movies/Serial:/tv #optional
-      - /mnt/share/other/Downloads:/downloads #optional
+      - /home/roman/configs/arrs/sonarr:/config
+      - /mnt/share/Media/Series:/tv #optional
+      - /mnt/share/Media/Downloads:/downloads #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -42,7 +42,7 @@ services:
       - PGID=1000
       - TZ=Europe/Kyiv
     volumes:
-      - /home/roman/configs/prowlarr:/config
+      - /home/roman/configs/arrs/prowlarr:/config
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -57,5 +57,5 @@ services:
        ports:
             - 5055:5055
        volumes:
-            - /home/roman/configs/overseerr:/app/config
+            - /home/roman/configs/arrs/overseerr:/app/config
        restart: unless-stopped

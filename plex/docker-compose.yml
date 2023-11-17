@@ -9,7 +9,7 @@ services:
       - VERSION=docker
     volumes:
       - '/home/roman/configs/plex:/config'
-      - '/mnt/share/Movies/Serial:/tv'
-      - '/mnt/share/Movies/Films:/movies'
+      - '/mnt/share/Media/Series:/tv'
+      - '/mnt/share/Media/Movies:/movies'
     restart: unless-stopped
     image: 'lscr.io/linuxserver/plex:latest'

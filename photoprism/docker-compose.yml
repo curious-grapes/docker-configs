@@ -16,6 +16,6 @@ services:
       - PHOTOPRISM_UMASK=0002
     volumes:
       - '/home/roman/configs/photoprism:/photoprism/storage'
-      - '/mnt/share/Photo/service:/photoprism/originals'
+      - '/mnt/share/Media/Photo/service:/photoprism/originals'
     restart: unless-stopped
     image: photoprism/photoprism

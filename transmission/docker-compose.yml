@@ -12,7 +12,7 @@ services:
       - '51413:51413/udp'
     volumes:
       - '/home/roman/configs/transmission:/config'
-      - '/mnt/share/other/Downloads:/downloads'
-      - '/home/roman/scripts/torrent/:/watch'
+      - '/mnt/share/Media/Downloads:/downloads'
+      - '/mnt/share/Media/Torrents:/watch'
     restart: unless-stopped
     image: 'lscr.io/linuxserver/transmission:latest'

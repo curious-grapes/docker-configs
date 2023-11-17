@@ -10,9 +10,9 @@ services:
       - TZ=Europe/Kyiv
       - JELLYFIN_PublishedServerUrl=192.168.0.7 #optional
     volumes:
-      - /mnt/share/BACKUP/jellyfin:/config
-      - /mnt/share/Movies/Serial:/data/tvshows
-      - /mnt/share/Movies/Films:/data/movies
+      - /mnt/share/Media/jellyfin:/config
+      - /mnt/share/Media/Series:/data/tvshows
+      - /mnt/share/Media/Movies:/data/movies
     ports:
       - 8011:8096
       - 7359:7359/udp #optional
