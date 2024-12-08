@@ -63,16 +63,3 @@ services:
     volumes:
         - /home/roman/configs/arrs/overseerr:/app/config
     restart: unless-stopped
-
-  jellyseerr:
-    image: fallenbagel/jellyseerr:latest
-    container_name: jellyseerr
-    network_mode: bridge
-    environment:
-        - LOG_LEVEL=debug
-        - TZ=Europe/Kyiv
-    ports:
-        - 5055:5055
-    volumes:
-        - /home/roman/configs/arrs/overseerr:/app/config
-    restart: unless-stopped
