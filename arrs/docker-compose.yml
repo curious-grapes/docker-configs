@@ -8,9 +8,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Ukraine
+      - TZ=Europe/Kyiv
     volumes:
       - /home/roman/configs/arrs/radarr:/config
+      - /mnt/media:/data #optional
+      - /mnt/media/Downloads:/downloads
       - /mnt/media:/data #optional
       - /mnt/media/Downloads:/downloads
     ports:
@@ -29,6 +31,8 @@ services:
       - /home/roman/configs/arrs/sonarr:/config
       - /mnt/media:/data #optional
       - /mnt/media/Downloads:/downloads
+      - /mnt/media:/data #optional
+      - /mnt/media/Downloads:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -45,6 +49,19 @@ services:
       - /home/roman/configs/arrs/prowlarr:/config
     ports:
       - 9696:9696
+    restart: unless-stopped
+
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    network_mode: bridge
+    environment:
+        - LOG_LEVEL=debug
+        - TZ=Europe/Kyiv
+    ports:
+        - 5055:5055
+    volumes:
+        - /home/roman/configs/arrs/overseerr:/app/config
     restart: unless-stopped
 
   jellyseerr:
