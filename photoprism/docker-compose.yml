@@ -10,12 +10,12 @@ services:
       - PHOTOPRISM_WORKERS=2
       - PHOTOPRISM_WAKEUP_INTERVAL=780
       - PHOTOPRISM_DISABLE_WEBDAV=true
-      - 'PHOTOPRISM_SITE_URL=https://photo.curious-grapes.one'
+      - 'PHOTOPRISM_SITE_URL=https://example.com'
       - PHOTOPRISM_UID=1000
       - PHOTOPRISM_GID=1000
       - PHOTOPRISM_UMASK=0002
     volumes:
       - '/home/roman/configs/photoprism:/photoprism/storage'
-      - '/mnt/share/Media/Photo/service:/photoprism/originals'
+      - '/mnt/share/other/Photo/service:/photoprism/originals'
     restart: unless-stopped
     image: photoprism/photoprism

@@ -12,6 +12,7 @@ services:
     depends_on:
       - scrutiny_db
     restart: unless-stopped
+    privileged: true
   scrutiny_db:
     container_name: scrutiny_db
     image: influxdb:2.2

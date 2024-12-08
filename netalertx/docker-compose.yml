@@ -1,0 +1,17 @@
+version: "3"
+services:
+  netalertx:
+    container_name: netalertx
+    image: "jokobsk/netalertx:latest" 
+    network_mode: "host"
+    restart: unless-stopped
+    volumes:
+      - /home/roman/configs/pialert:/app/config
+      - /home/roman/configs/pialert/db:/app/db
+      # (optional) useful for debugging if you have issues setting up the container
+      #- local/path/logs:/home/pi/pialert/front/log
+    environment:
+      - TZ=Europe/Kiev
+      - HOST_USER_ID=1000
+      - HOST_USER_GID=1000
+      - PORT=8018

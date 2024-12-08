@@ -1,17 +1,28 @@
 ## My docker-compose configs
 There are configs available for:
+
+- arrs (Radarr, Sonarr, Prowlarr, Jellyseerr)
+- Authelia
+- Duplicati
 - Esphome
-- Heimdall
+- Guacamole
 - Home assistant
+- Immich
+- Jellyfin
 - Matomo
-- Navidrome
-- Onlyoffice
+- Mealie
+- NetAlertX
+- Nextcloud
+- OnlyOffice
 - Owncloud
+- Paperless
 - Photoprism
-- Plex
 - Portainer
+- QBitTorrent
+- Scrutiny
 - Syncthing
 - Transmission
+- VPN
 - Watchtower
 - Wordpress
 

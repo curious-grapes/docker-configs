@@ -1,20 +1,29 @@
-version: '3.3'
+version: "3"
 services:
   watchtower:
     container_name: watchtower
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
-    restart: always
-    environment:
-      - 'WATCHTOWER_SCHEDULE=0 30 3 * * *'
-      - WATCHTOWER_NOTIFICATIONS=email
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_NOTIFICATION_EMAIL_FROM=example@gmail.com
-      - WATCHTOWER_NOTIFICATION_EMAIL_TO=example@gmail.com
-      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=smtp.gmail.com
-      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PORT=587
-      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=example@gmail.com
-      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD=password
-      - WATCHTOWER_NOTIFICATION_EMAIL_DELAY=2
-      - TZ=Europe/Kiev
     image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      WATCHTOWER_SCHEDULE: "0 0 10 * * *"
+      TZ: "Europe/Kiev"
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_NOTIFICATION_REPORT: "true"
+      WATCHTOWER_NOTIFICATIONS_HOSTNAME: "server"
+      WATCHTOWER_NOTIFICATION_URL: >
+        telegram://bot{{TELEGRAM_BOT_TOKEN}}/sendMessage?chat_id={{TELEGRAM_CHAT_ID}}&text={{MESSAGE}}
+      WATCHTOWER_NOTIFICATION_TEMPLATE: |
+        {{- if .Report -}}
+          {{- with .Report -}}
+        {{len .Scanned}} Scanned, {{len .Updated}} Updated, {{len .Failed}} Failed
+              {{- range .Updated}}
+        - {{.Name}} was updated
+              {{- end -}}
+            {{- range .Failed}}
+        - {{.Name}} ({{.ImageName}}): {{.State}}: {{.Error}}
+            {{- end -}}
+          {{- end -}}
+        {{- else -}}
+          {{range .Entries -}}{{.Message}}{{"\n"}}{{- end -}}
+        {{- end -}}

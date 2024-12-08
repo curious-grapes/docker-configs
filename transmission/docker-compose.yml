@@ -1,18 +1,22 @@
-version: '3.3'
+---
+version: "2.1"
 services:
-  linuxserver:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
     container_name: transmission
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Kiev
-    ports:
-      - '8009:9091'
-      - '51413:51413'
-      - '51413:51413/udp'
+      - USER=user #optional
+      - PASS=test #optional
+      - WHITELIST= #optional
     volumes:
-      - '/home/roman/configs/transmission:/config'
-      - '/mnt/share/Media/Downloads:/downloads'
-      - '/mnt/share/Media/Torrents:/watch'
+      - /home/roman/configs/transmission:/config
+      - /mnt/media/Downloads:/downloads
+      - /mnt/share/Media/Torrents:/watch
+    ports:
+      - 8009:9091
+      - 51413:51413
+      - 51413:51413/udp
     restart: unless-stopped
-    image: 'lscr.io/linuxserver/transmission:latest'
